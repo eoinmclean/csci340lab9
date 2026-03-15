@@ -17,6 +17,7 @@ namespace ContosoUniversity.Pages_Students
         public IndexModel(ContosoUniversity.Data.SchoolContext context)
         {
             _context = context;
+            
         }
 
         public IList<Student> Student { get;set; } = default!;

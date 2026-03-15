@@ -31,6 +31,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<SchoolContext>();
+    Console.WriteLine("Current directory: " + Directory.GetCurrentDirectory());
+    Console.WriteLine("Connection string: " + builder.Configuration.GetConnectionString("SchoolContextSQLite"));
     context.Database.EnsureCreated();
     DbInitializer.Initialize(context);
 }
