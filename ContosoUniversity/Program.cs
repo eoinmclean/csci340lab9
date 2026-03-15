@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SchoolContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SchoolContext") ?? throw new InvalidOperationException("Connection string 'SchoolContext' not found.")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("SchoolContextSQLite") ?? throw new InvalidOperationException("Connection string 'SchoolContextSQLite' not found.")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -32,7 +32,7 @@ using (var scope = app.Services.CreateScope())
 
     var context = services.GetRequiredService<SchoolContext>();
     context.Database.EnsureCreated();
-    // DbInitializer.Initialize(context);
+    DbInitializer.Initialize(context);
 }
 
 
